@@ -1,7 +1,7 @@
 PREFIX    = /usr/local
 
-CC      = cc
-LD      = $(CC)
+CC      = g++
+LD      = $(g++)
 
 CFLAGS  = -std=c99 -pedantic -Wall -fPIC -Os
 LDFLAGS = -lxcb -lxcb-randr
