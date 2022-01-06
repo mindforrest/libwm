@@ -255,7 +255,7 @@ wm_get_atom_name(xcb_atom_t atom, size_t *len)
 		return NULL;
 
 	n = xcb_get_atom_name_name_length(r) + 1;
-	name = malloc(xcb_get_atom_name_name_length(r) + 1);
+	name = static_cast<char*>(malloc(xcb_get_atom_name_name_length(r) + 1));
 	if (!name) {
 		free(r);
 		return NULL;
@@ -563,7 +563,7 @@ wm_get_monitor(int index)
 		if (i.index != index)
 			continue;
 
-		monitor = calloc(1, sizeof(*monitor));
+		monitor = static_cast<xcb_randr_monitor_info_t*>(calloc(1, sizeof(*monitor)));
 		if (!monitor)
 			return NULL;
 
