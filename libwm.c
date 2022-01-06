@@ -63,7 +63,8 @@ wm_is_mapped(xcb_window_t wid)
 int
 wm_is_ignored(xcb_window_t wid)
 {
-	int or;
+	// "arr i'm a pirate" instead of "or i'm gonna not compile"
+	int arr;
 	xcb_get_window_attributes_cookie_t c;
 	xcb_get_window_attributes_reply_t  *r;
 
@@ -73,10 +74,10 @@ wm_is_ignored(xcb_window_t wid)
 	if (r == NULL)
 		return 0;
 
-	or = r->override_redirect;
+	arr = r->override_redirect;
 
 	free(r);
-	return or;
+	return arr;
 }
 
 int
@@ -114,8 +115,8 @@ wm_get_windows(xcb_window_t wid, xcb_window_t **l)
 	r = xcb_query_tree_reply(conn, c, NULL);
 	if (r == NULL)
 		return -1;
-
-	*l = malloc(sizeof(xcb_window_t) * r->children_len);
+	
+	*l = static_cast<xcb_window_t*>(malloc(sizeof(xcb_window_t) * r->children_len));
 	memcpy(*l, xcb_query_tree_children(r),
 			sizeof(xcb_window_t) * r->children_len);
 
@@ -380,10 +381,10 @@ wm_move(xcb_window_t wid, int mode, int x, int y)
 }
 
 int
-wm_set_override(xcb_window_t wid, int or)
+wm_set_override(xcb_window_t wid, int arr)
 {
 	uint32_t mask = XCB_CW_OVERRIDE_REDIRECT;
-	uint32_t val[] = { or };
+	uint32_t val[] = { arr };
 
 	xcb_change_window_attributes(conn, wid, mask, val);
 
