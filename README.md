@@ -1,7 +1,8 @@
 Fork notes:
 =====
-c++ compatability fixes
-that's it
+c++ compatability fixes that's it
+
+i don't think it works yet
 
 libwm
 =====
