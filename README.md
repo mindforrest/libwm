@@ -2,8 +2,6 @@ Fork notes:
 =====
 c++ compatability fixes that's it
 
-i don't think it works yet
-
 libwm
 =====
 A small library for X window manipulation
