@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "wm.h"
+#include "libwm.h"
 
 int
 wm_init_xcb()
